@@ -1,0 +1,72 @@
+{
+  "name": "asf-main-page-0.0.1",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.7.7",
+    "core-js": "^3.6.5",
+    "husky": "^7.0.1",
+    "less": "^4.1.1",
+    "postcss-px-to-viewport": "^1.1.1",
+    "reset-css": "^5.0.1",
+    "swiper": "^5.4.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "less-loader": "^7.3.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-px-to-viewport": {
+        "unitToConvert": "px",
+        "viewportWidth": 1080,
+        "unitPrecision": 5,
+        "propList": ["*"],
+        "viewportUnit": "vw",
+        "fontViewportUnit": "vw",
+        "selectorBlackList": [],
+        "minPixelValue": 1,
+        "mediaQuery": false,
+        "replace": true,
+        "exclude": [],
+        "landscape": false,
+        "landscapeUnit": "vw",
+        "landscapeWidth": 568
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
