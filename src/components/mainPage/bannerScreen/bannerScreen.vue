@@ -7,9 +7,9 @@
             <div class="describe">
               <h1>ASOUL FAN</h1>
               <h2>属于一个魂的小城捏</h2>
-              <div>按钮</div>
+<!--              <div>按钮</div>-->
             </div>
-            <img  class="slide-img" src="../../assets/images/top/banner.png">
+            <img  class="slide-img" src="../../../assets/images/top/banner.png">
           </div>
         </div>
       </div>

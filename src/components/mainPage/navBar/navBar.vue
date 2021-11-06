@@ -8,22 +8,12 @@
         <path d="M80.248 25.8426V39.4273H91.334L91.365 25.8426C91.3697 25.5291 91.516 25.2295 91.7728 25.0077C92.0297 24.7859 92.3767 24.6594 92.74 24.6551H107.048L112.712 15.0619H92.685C85.827 15.0619 80.248 19.8982 80.248 25.8426Z" fill="#182233"/>
       </svg>
     </div>
-    <div class="cube-content">
+    <div class="cube-content"  @click="toPersonalSpace">
       <svg class="cube-icon" viewBox="0 0 44 46" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 -6.10352e-05H44V5.99994H0V-6.10352e-05Z" fill="#182233"/>
         <path d="M0 40H44V46H0V40Z" fill="#182233"/>
         <path d="M0 20.0711H44V26.0711H0V20.0711Z" fill="#182233"/>
       </svg>
-    </div>
-    <div v-if="layerFlag" class="mask-layer" @touchmove.prevent>
-      <div class="mask-close" @click="closeLayer"></div>
-      <div class="mask-content">
-        <div  v-for="(item,index) in meumList" :key="index">
-          <div class="choose-title" @click="chooseComponent(item)">{{item.title}}
-            <div v-if="pageScreen.componentName === item.componentName" class="active"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -31,31 +21,14 @@
 <script>
 export default {
   name: "navBar",
-  inject: ['pageScreen'],
   data() {
     return {
-      layerFlag: false,
-      meumList: [
-        {title: '成员介绍',componentName: 'memberScreen'},
-        {title: '团队介绍',componentName: 'teamScreen'}
-      ]
     }
   },
   methods: {
-    openLayer() {
-      //  弹出遮罩层
-      this.layerFlag = true
-      console.log(this.pageScreen)
-    },
-    closeLayer() {
-      this.layerFlag = false
-    },
-    chooseComponent(item) {
-      if(item.componentName === this.pageScreen) {
-        return
-      } else {
-        this.pageScreen.componentName = item.componentName
-      }
+    toPersonalSpace() {
+      //  跳转到个人空间
+      this.$router.push({name: 'space'})
     }
   }
 }
@@ -89,49 +62,6 @@ export default {
     width: 120px;
     height: 40px;
   }
-
-  .mask-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255,255,255, 0.6);
-
-    .mask-close{
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      width: 50px;
-      height: 50px;
-      background-image: url("../../assets/images/navbar/close.png");
-      background-size: 100% 100%;
-
-    }
-    .mask-content {
-      margin: 0 auto;
-      margin-top: 180px;
-      .choose-title {
-        position: relative;
-        margin-top: 60px;
-        text-align: center;
-        font-size: 35px;
-        z-index: 5;
-        .active{
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          display: block;
-          width: 300px;
-          height: 15px;
-          background-color: rgba(255,135,114, 0.6);
-          z-index: 0;
-        }
-      }
-    }
-  }
-
 }
 
 </style>

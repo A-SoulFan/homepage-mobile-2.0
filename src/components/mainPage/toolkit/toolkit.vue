@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     processUrl(icon) {
-      return require(`../../assets/images/toolkit/${icon}.svg`)
+      return require(`../../../assets/images/toolkit/${icon}.svg`)
     }
   }
 }
