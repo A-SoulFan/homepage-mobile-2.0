@@ -1,32 +1,20 @@
 <template>
   <div id="app">
-    <main-page/>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
 <script>
-
-import MainPage from './components/mainPage/mainPage'
 
 export default {
 
   beforeCreate() {
     document.getElementsByTagName("body")[0].setAttribute("style", "margin:0");
   },
-  name: 'App',
-  components: {
-    MainPage,
-  },
-  data() {
-    return {
-      screen: {componentName: 'memberScreen', name: '团员介绍'}
-    }
-  },
-  provide() {
-    return {
-      pageScreen: this.screen
-    }
-  },
+  name: 'App'
 }
 </script>
 

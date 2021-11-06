@@ -1,4 +1,4 @@
-# asf-main-page-v0.0.1
+# asf-main-page-mobile v0.0.1
 
 >### 运行前安装
 >>`yarn install`
