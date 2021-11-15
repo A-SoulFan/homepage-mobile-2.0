@@ -1,55 +1,74 @@
 <template>
-  <div id="popularVideo">
-    <div class="title">热门内容</div>
-    <div class="section" v-for="item of list" :key="item.id">
-      <div class="section-headline">
-      <div class="section-title">{{item.type}}</div>
-      <div class="section-more">更多></div>
-      </div>
-      <div class="section-video">
-        <div class="video-container" v-for="(item) of 6" :key="item">
-          <div class="video">
-            <video width="100%" height="100%"></video>
-          </div>
-          <div class="section-video-title">视频标题</div>
-          <div class="section-video-hot">
-            <div class="section-video-hot-icon">
-              <svg viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.46496 10.4701L4.00162 7.80178C2.76697 9.73893 1.82996 12.0233 1.82996 14.4951C1.82996 16.6301 2.67808 18.6777 4.18774 20.1873C5.69742 21.697 7.74494 22.5451 9.87996 22.5451C12.015 22.5451 14.0625 21.697 15.5722 20.1873C17.0818 18.6777 17.93 16.6301 17.93 14.4951C17.93 7.25011 10.685 1.61511 10.685 1.61511L7.46496 10.4701Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+    <div id="popularVideo">
+        <div class="title">热门内容</div>
+        <div class="section" v-for="item of list" :key="item.id">
+            <div class="section-headline">
+                <div class="section-title">{{ item.type }}</div>
+                <div class="section-more">更多></div>
             </div>
-            <div class="section-video-hot-num">114514</div>
-          </div>
+            <div class="section-video">
+                <div class="video-container" v-for="video_info of video_list" :key="video_info.name">
+                    <div class="video">
+                        <img class="video_card-img" :src="video_info.pic" :alt="video_info.name"
+                             @click="openWindow(video_info.url)"/>
+                    </div>
+                    <div class="section-video-title">{{ stringFold(video_info.name, 12) }}</div>
+                    <div class="section-video-hot">
+                        <div class="section-video-hot-icon">
+                            <svg viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.46496 10.4701L4.00162 7.80178C2.76697 9.73893 1.82996 12.0233 1.82996 14.4951C1.82996 16.6301 2.67808 18.6777 4.18774 20.1873C5.69742 21.697 7.74494 22.5451 9.87996 22.5451C12.015 22.5451 14.0625 21.697 15.5722 20.1873C17.0818 18.6777 17.93 16.6301 17.93 14.4951C17.93 7.25011 10.685 1.61511 10.685 1.61511L7.46496 10.4701Z"
+                                      stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="section-video-hot-num">114514</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script type="text/ecmascript-6">
-import { getVideoList } from '../../../request/api'
+import axios from 'axios';
 
 export default {
-  name: 'popularVideo',
-  data() {
-    return {
-      list: [
-        {id:1, type: '切片', url: ''},
-        {id:2, type: '二创', url: ''},
-      ]
+    name: 'popularVideo',
+    data() {
+        return {
+            list: [
+                {id: 1, type: '切片', url: ''},
+                {id: 2, type: '二创', url: ''},
+            ],
+            video_list: []
+        }
+    },
+    mounted() {
+        axios.get("https://api.asoul.cloud:8000/getBV?page=1&tag_id=0&sort=4&part=0&rank=0&ctime=0&type=1")
+            .then(
+                res => {
+                    let {data} = res;
+                    this.$data.video_list = data.map(element => {
+                        return {
+                            name: element.title,
+                            pic: element.pic,
+                            hot: "",
+                            url: "https://www.bilibili.com/video/" + element.bvid,
+                        }
+                    }).slice(0, 4);
+                    console.log(res, data, this.video_list)
+                }
+            );
+    },
+    methods: {
+        stringFold(str, maxLength) {
+            if (str.length <= maxLength) return str;
+            else return str.substring(0, maxLength) + "…"
+
+        },
+        openWindow(str) {
+            window.open(str);
+        }
     }
-  },
-  methods: {
-    initVideoList () {
-      // https://api.asoul.cloud:8000/getBV?page=1&tag_id=0&sort=2&part=0&rank=0&ctime=0&type=1
-      getVideoList(1,0, 2,0,0,0,1).then(res => {
-        console.log(res)
-      })
-    }
-  },
-  mounted() {
-    this.initVideoList()
-  }
 }
 </script>
 
@@ -87,7 +106,7 @@ export default {
     justify-content: space-between;
     .video-container {
       margin-bottom: 51px;
-      .video {
+      .video_card-img {
         width: 460px;
         height: 263.12px;
         background: #182233;
