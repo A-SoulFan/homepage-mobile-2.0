@@ -2,7 +2,7 @@
   <div id="toolkit">
     <div class='title'>常用工具</div>
     <div class="tool">
-      <div class="tool-item" v-for="item of list" :key="item.id">
+      <div class="tool-item" v-for="item of list" :key="item.id" @click="jumpToAsfTool(item)">
         <div class="tool-icon">
           <img :src="processUrl(item.icon)">
         </div>
@@ -18,18 +18,21 @@ export default {
   data() {
     return {
       list: [
-        {id: 1,icon: 'book', name: '方言词典'},
-        {id: 2,icon: 'cross', name: '成分姬'},
-        {id: 3,icon: 'cube', name: '枝网查重'},
-        {id: 4,icon: 'emoji', name: '表情包'},
-        {id: 5,icon: 'linechart', name: '数据分析'},
-        {id: 6,icon: 'transcube', name: '今天溜什么'}
+        {id: 1,icon: 'book', name: '方言词典', postfix: ''},
+        {id: 2,icon: 'cross', name: '成分姬',postfix: 'part'},
+        {id: 3,icon: 'cube', name: '枝网查重', postfix: 'checkArticle'},
+        {id: 4,icon: 'emoji', name: '表情包', postfix: 'emoji'},
+        {id: 5,icon: 'linechart', name: '数据分析', postfix: 'fanQuery'},
+        {id: 6,icon: 'transcube', name: '今天溜什么', postfix: 'randomVideo'}
       ]
     }
   },
   methods: {
     processUrl(icon) {
       return require(`../../../assets/images/toolkit/${icon}.svg`)
+    },
+    jumpToAsfTool() {
+
     }
   }
 }

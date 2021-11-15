@@ -27,6 +27,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { getVideoList } from '../../../request/api'
+
 export default {
   name: 'popularVideo',
   data() {
@@ -36,6 +38,17 @@ export default {
         {id:2, type: '二创', url: ''},
       ]
     }
+  },
+  methods: {
+    initVideoList () {
+      // https://api.asoul.cloud:8000/getBV?page=1&tag_id=0&sort=2&part=0&rank=0&ctime=0&type=1
+      getVideoList(1,0, 2,0,0,0,1).then(res => {
+        console.log(res)
+      })
+    }
+  },
+  mounted() {
+    this.initVideoList()
   }
 }
 </script>

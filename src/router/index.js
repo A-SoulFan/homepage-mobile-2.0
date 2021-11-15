@@ -16,11 +16,13 @@ export default new Router({
 	path: '/main',
 	name: 'main',
 	component: mainPage,
-	meta: {keepAlive: true
+	meta: {keepAlive: true, weight: 0
 	}
   },
   {
 	path: '/space',
 	name: 'space',
-	component: personalCenter
+	component: personalCenter,
+	meta: {weight: 1
+	}
   }]})

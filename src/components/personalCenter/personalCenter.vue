@@ -15,7 +15,9 @@
 
     </div>
     <div class="login-container">
-      <div class="avatar"></div>
+      <div class="avatar">
+        <img />
+      </div>
       <div class="login-option">登录 / 注册</div>
     </div>
     <div class="shortcut-menu">
@@ -26,7 +28,7 @@
         >
           <div class="name">{{item.name}}</div>
           <div class="expand-child">
-            <svg  viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg  style="border: none" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect y="18.9999" width="42" height="4" fill="#182233"/>
               <rect x="19" y="42" width="42" height="4" transform="rotate(-90 19 42)" fill="#182233"/>
             </svg>
@@ -134,6 +136,7 @@ export default {
         font-weight: 400;
         line-height: 53px;
         color: #182233;
+        border: none;
       }
       .expand-child {
         width: 42px;
