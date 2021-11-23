@@ -20,7 +20,7 @@
                                       stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <div class="section-video-hot-num">114514</div>
+                        <div class="section-video-hot-num">{{video_info.view}}</div>
                     </div>
                 </div>
             </div>
@@ -53,9 +53,9 @@ export default {
                             pic: element.pic,
                             hot: "",
                             url: "https://www.bilibili.com/video/" + element.bvid,
+                            view: element.stat_view
                         }
                     }).slice(0, 4);
-                    console.log(res, data, this.video_list)
                 }
             );
     },
