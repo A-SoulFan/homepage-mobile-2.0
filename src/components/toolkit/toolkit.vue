@@ -1,29 +1,54 @@
 <template>
-  <div id="toolkit">
-    <div class='title'>常用工具</div>
-    <div class="tool">
-      <div class="tool-item" v-for="item of list" :key="item.id">
-        <div class="tool-icon">
-          <img :src="processUrl(item.icon)">
+<div id="toolkit">
+  <div class='title'>常用工具</div>
+  <div class="tool">
+    <div class="tool-item" v-for="item of list" :key="item.id">
+      <a :href=item.href style="text-decoration:none;">
+        <div class="tool-item">
+          <div class="tool-icon">
+            <img :src="processUrl(item.icon)">
+          </div>
+          <div class="tool-name">{{item.name}}</div>
         </div>
-        <div class="tool-name">{{item.name}}</div>
-      </div>
+      </a>
     </div>
   </div>
+</div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 export default {
   name: 'toolkit',
   data() {
     return {
-      list: [
-        {id: 1,icon: 'book', name: '方言词典'},
-        {id: 2,icon: 'cross', name: '成分姬'},
-        {id: 3,icon: 'cube', name: '枝网查重'},
-        {id: 4,icon: 'emoji', name: '表情包'},
-        {id: 5,icon: 'linechart', name: '数据分析'},
-        {id: 6,icon: 'transcube', name: '今天溜什么'}
+      list: [{
+          id: 1,
+          icon: 'book',
+          name: '方言词典',
+          href: 'https://tools-demo.asoulfan.com/zhijiangDict'
+        },
+        {
+          id: 2,
+          icon: 'cross',
+          name: '成分姬',
+          href: 'https://tools-demo.asoulfan.com/ingredientChecking'
+        },
+        {
+          id: 3,
+          icon: 'cube',
+          name: '枝网查重',
+          href: 'https://tools-demo.asoulfan.com/duplicateChecking'
+        },
+        {
+          id: 4,
+          icon: 'transcube',
+          name: '今天溜什么',
+          href: 'https://tools-demo.asoulfan.com/randomVideo'
+        }
+
+        // 暂时未有相关网站，故不添加
+        // {id: 6,icon: 'emoji', name: '表情包'}, href: '',
+        // {id: 5,icon: 'linechart', name: '数据分析', href: ''},
       ]
     }
   },
@@ -35,12 +60,13 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 #toolkit {
   margin-bottom: 78px;
   padding: 46px 63px 0px 63px;
   height: 100%;
 }
+
 .title {
   margin-top: 20px;
   margin-bottom: 37px;
@@ -51,29 +77,33 @@ export default {
   line-height: 63px;
 
 }
+
 .tool {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+
   .tool-item {
-    margin-bottom: 49px;
-    width: 273px;
-    height: 273px;
+    margin-bottom: 80px;
+    width: 450px;
+    height: 400px;
     background: #182233;
-    border-radius: 10px;
+    border-radius: 30px;
+
     .tool-icon {
       margin: 0 auto;
-      margin-top: 35px;
+      margin-top: 40px;
       margin-bottom: 14px;
-      width: 155px;
-      height: 155px;
+      width: 255px;
+      height: 255px;
     }
+
     .tool-name {
-      margin:  0 auto;
+      margin: 0 auto;
       text-align: center;
       font-family: OPPOSans;
-      font-size: 36px;
+      font-size: 59px;
       color: #F3F4F6;
 
     }
