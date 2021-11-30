@@ -21,25 +21,25 @@ export default {
           id: 1,
           icon: 'book',
           name: '方言词典',
-          href: 'https://tools-demo.asoulfan.com/zhijiangDict'
+          href: 'https://tools.asoulfan.com/zhijiangDict'
         },
         {
           id: 2,
           icon: 'cross',
           name: '成分姬',
-          href: 'https://tools-demo.asoulfan.com/ingredientChecking'
+          href: 'https://tools.asoulfan.com/ingredientChecking'
         },
         {
           id: 3,
           icon: 'cube',
           name: '枝网查重',
-          href: 'https://tools-demo.asoulfan.com/duplicateChecking'
+          href: 'https://tools.asoulfan.com/duplicateChecking'
         },
         {
           id: 4,
           icon: 'transcube',
           name: '今天溜什么',
-          href: 'https://tools-demo.asoulfan.com/randomVideo'
+          href: 'https://tools.asoulfan.com/randomVideo'
         }
 
         // 暂时未有相关网站，故不添加
