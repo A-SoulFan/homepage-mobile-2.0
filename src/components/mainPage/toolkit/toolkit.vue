@@ -52,8 +52,8 @@ export default {
     processUrl(icon) {
       return require(`../../../assets/images/toolkit/${icon}.svg`)
     },
-    jumpToAsfTool() {
-
+    jumpToAsfTool(item) {
+      window.open(item.href)
     }
   }
 }
@@ -85,6 +85,7 @@ export default {
 
   .tool-item {
     margin-bottom: 80px;
+    padding-bottom: 40px;
     width: 450px;
     height: 400px;
     background: #182233;
@@ -94,17 +95,18 @@ export default {
       margin: 0 auto;
       margin-top: 40px;
       margin-bottom: 14px;
-      width: 255px;
+      width: 300px;
       height: 255px;
     }
 
     .tool-name {
-      margin: 0 auto;
+
+      margin-bottom: 20px;
       text-align: center;
       font-family: OPPOSans;
       font-size: 59px;
       color: #F3F4F6;
-
+  
     }
   }
 }

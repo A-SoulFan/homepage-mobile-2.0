@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     processUrl(img) {
-      return require(`../../assets/images/bannerScreen/${img}.jpg`)
+      return require(`../../../assets/images/bannerScreen/${img}.jpg`);
     }
   }
 
