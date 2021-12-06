@@ -5,7 +5,7 @@
       <div class="swiper-slide top-swiper-slide" v-for="item of list" :key="item">
         <div class="slide-item top-slide-item">
           <a :href=item.href style="text-decoration:none;">
-            <img :src="processUrl(item.img)">
+            <img class="banner-img" :src="processUrl(item.img)">
           </a>
         </div>
       </div>
@@ -82,7 +82,9 @@ export default {
   width: 100vw;
   font-family: FZLTCHJW, serif;
 }
-
+.banner-img{
+  width:100%
+}
 .banner-top {
   position: relative;
   width: 100vw;
