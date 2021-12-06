@@ -4,10 +4,10 @@
         <div class="section" v-for="item of list" :key="item.id">
             <div class="section-headline">
                 <div class="section-title">{{ item.type }}</div>
-                <div class="section-more">更多></div>
+                <div class="section-more">更多>></div>
             </div>
             <div class="section-video">
-                <div class="video-container" v-for="video_info of video_list" :key="video_info.name">
+                <div class="video-container" v-for="video_info,index of video_list[item.id]" :key="index+item.id">
                     <div class="video">
                         <img class="video_card-img" :src="video_info.pic" :alt="video_info.name"
                              @click="openWindow(video_info.url)"/>
@@ -36,28 +36,36 @@ export default {
     data() {
         return {
             list: [
-                {id: 1, type: '切片', url: ''},
-                {id: 2, type: '二创', url: ''},
+                {id: 1, type: '切片', url: "https://support-api.asoulfan.com/api/recommend-slice"},
+                {id: 2, type: '二创', url: "https://api.asoul.cloud:8000/getBV?page=1&tag_id=0&sort=4&part=0&rank=0&ctime=0&type=1"},
             ],
-            video_list: []
+            video_list: {
+              1:[],
+              2:[]
+            }
         }
     },
     mounted() {
-        axios.get("https://api.asoul.cloud:8000/getBV?page=1&tag_id=0&sort=4&part=0&rank=0&ctime=0&type=1")
+      
+      this.$data.list.forEach(element => {
+        let {id,url} = element;
+        axios.get(url)
             .then(
                 res => {
                     let {data} = res;
-                    this.$data.video_list = data.map(element => {
+                    if(data.data) data =data.data;
+                    this.$data.video_list[id] = data.map(element => {
                         return {
                             name: element.title,
-                            pic: element.pic,
+                            pic: element.pic || element.image_url,
                             hot: "",
-                            url: "https://www.bilibili.com/video/" + element.bvid,
-                            view: element.stat_view
+                            url: "https://www.bilibili.com/video/" + element.bvid || element.bid,
+                            view: element.stat_view || element.play_val
                         }
                     }).slice(0, 4);
                 }
             );
+      });
     },
     methods: {
         stringFold(str, maxLength) {
@@ -96,7 +104,7 @@ export default {
     }
     .section-more {
       font-family: OPPOSans;
-      font-size: 12px;
+      font-size: 30px;
     }
   }
   .section-video {
@@ -130,7 +138,7 @@ export default {
         }
         .section-video-hot-num {
           font-family: OPPOSans;
-          font-size: 18px;
+          font-size: 24px;
           line-height: 40px;
           color: #6B7280;
         }
