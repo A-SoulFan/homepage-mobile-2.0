@@ -28,7 +28,7 @@ export default {
   methods: {
     toPersonalSpace() {
       //  跳转到个人空间
-      // this.$router.push({name: 'space'})
+       this.$router.push({name: 'space'})
     }
   }
 }

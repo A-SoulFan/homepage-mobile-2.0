@@ -8,18 +8,39 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data() {
     return {
-      transitionName: ''
+      transitionName: '',
+      navList : [
+      {
+        name: '敬请期待',
+      },
+      {
+        name: '敬请期待',
+
+      },
+      {
+        name: '实用工具',
+        secondaryList: [
+          { name: '枝网查重', methods: 'router', link: '/duplicateChecking' },
+          { name: '今日溜什么', methods: 'router', link: '/randomVideo' },
+          { name: '成分姬', methods: 'router', link: '/ingredientChecking' },
+          // { name: "表情包", methods: "router", link: "/emojicollect" },
+          { name: '方言词典', methods: 'router', link: '/zhijiangDict' },
+        ],
+      },
+      {
+        name: '敬请期待',
+      },
+    ]
     }
   },
   watch: {
     $route(to, from) {
       if(to.meta.index > from.meta.index) {
-        this.transitionName = 'slide-left'
+        this.transtionName = 'slide-left'
       } else {
         this.transitionName = 'slide-right'
       }
