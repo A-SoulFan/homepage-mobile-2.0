@@ -4,7 +4,7 @@
         <div class="section" v-for="item of list" :key="item.id">
             <div class="section-headline">
                 <div class="section-title">{{ item.type }}</div>
-                <div class="section-more">更多>></div>
+                <div class="section-more" @click="moreDetail">更多>></div>
             </div>
             <div class="section-video">
                 <div class="video-container" v-for="video_info,index of video_list[item.id]" :key="index+item.id">
@@ -59,7 +59,7 @@ export default {
                             name: element.title,
                             pic: element.pic || element.image_url,
                             hot: "",
-                            url: "https://www.bilibili.com/video/" + element.bvid || element.bid,
+                            url: "https://www.bilibili.com/video/" + (element.bvid || element.bid),
                             view: element.stat_view || element.play_val
                         }
                     }).slice(0, 4);
@@ -75,6 +75,9 @@ export default {
         },
         openWindow(str) {
             window.open(str);
+        },
+        moreDetail() {
+          window.open("https://asoul.cloud/");
         }
     }
 }
