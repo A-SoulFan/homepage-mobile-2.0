@@ -40,10 +40,15 @@ export default {
           icon: 'transcube',
           name: '今天溜什么',
           href: 'https://tools.asoulfan.com/randomVideo'
+        },
+        {
+          id: 5,
+          icon: 'emoji',
+          name: '表情包',
+          href: 'https://tools.asoulfan.com/emojicollect'
         }
 
         // 暂时未有相关网站，故不添加
-        // {id: 6,icon: 'emoji', name: '表情包'}, href: '',
         // {id: 5,icon: 'linechart', name: '数据分析', href: ''},
       ]
     }

@@ -86,6 +86,7 @@ toolsUrl:"https://tools.asoulfan.com",
           { name: '成分姬', methods: 'router', link: '/ingredientChecking' },
           // { name: "表情包", methods: "router", link: "/emojicollect" },
           { name: '方言词典', methods: 'router', link: '/zhijiangDict' },
+           { name: '表情包', methods: 'router', link: '/emojicollect' },
         ],
       },
       {
